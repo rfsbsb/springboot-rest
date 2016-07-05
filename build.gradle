@@ -28,6 +28,11 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+    compile('joda-time:joda-time')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
