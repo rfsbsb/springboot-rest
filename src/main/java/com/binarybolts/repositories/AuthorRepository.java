@@ -1,7 +1,10 @@
 package com.binarybolts.repositories;
 
 import com.binarybolts.domain.Author;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AuthorRepository extends PagingAndSortingRepository<Author, Long> {
+@Repository
+public interface AuthorRepository extends CrudRepository<Author, Long> {
+
 }

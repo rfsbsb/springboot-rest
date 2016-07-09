@@ -33,11 +33,17 @@ dependencies {
     compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
     compile('joda-time:joda-time')
+	compile("org.flywaydb:flyway-core")
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }
 
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/spring'
+	user = 'spring'
+	password = 'spring'
+}
 
 eclipse {
 	classpath {
