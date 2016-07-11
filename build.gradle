@@ -12,7 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'springboot-rest'
@@ -37,12 +37,6 @@ dependencies {
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
-}
-
-flyway {
-	url = 'jdbc:postgresql://localhost:5432/spring'
-	user = 'spring'
-	password = 'spring'
 }
 
 eclipse {
