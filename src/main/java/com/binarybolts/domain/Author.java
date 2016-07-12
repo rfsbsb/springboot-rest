@@ -1,8 +1,14 @@
 package com.binarybolts.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.joda.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.joda.ser.LocalDateSerializer;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Author {
@@ -12,7 +18,8 @@ public class Author {
     private Long id;
     private String name;
     private String nationality;
-    private LocalDate birth;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date birth;
 
     public Long getId() {
         return id;
@@ -38,11 +45,11 @@ public class Author {
         this.nationality = nationality;
     }
 
-    public LocalDate getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
-    public void setBirth(LocalDate birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 }
