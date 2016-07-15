@@ -9,6 +9,7 @@ import org.joda.time.LocalDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Author {
@@ -20,6 +21,9 @@ public class Author {
     private String nationality;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date birth;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Book> books;
 
     public Long getId() {
         return id;
@@ -51,5 +55,13 @@ public class Author {
 
     public void setBirth(Date birth) {
         this.birth = birth;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

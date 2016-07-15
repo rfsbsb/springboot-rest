@@ -4,15 +4,20 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0.3")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: "org.flywaydb.flyway"
 
 jar {
 	baseName = 'springboot-rest'
@@ -25,6 +30,9 @@ repositories {
 	mavenCentral()
 }
 
+project.ext['flyway.user']='spring'
+project.ext['flyway.password']='spring'
+project.ext['flyway.url']='jdbc:postgresql://localhost:5432/spring'
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
@@ -33,7 +41,6 @@ dependencies {
     compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
     compile('joda-time:joda-time')
-	compile("org.flywaydb:flyway-core")
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
